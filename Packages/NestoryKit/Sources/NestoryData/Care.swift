@@ -11,6 +11,8 @@ public final class CareLog {
     public var amount: Double?
     public var unitRaw: String?
     public var note: String = ""
+    /// 기저귀 종류(DiaperKind)·모유 방향(BreastSide) 등 세부 값의 rawValue. 스키마 1.1 에서 추가.
+    public var detailRaw: String?
     /// 기록한 보호자 (Guardian.id). 보호자가 삭제돼도 기록은 남긴다.
     public var loggedByGuardianID: UUID?
 
@@ -24,6 +26,11 @@ public final class CareLog {
     public var unit: CareUnit? {
         get { unitRaw.flatMap(CareUnit.init(rawValue:)) }
         set { unitRaw = newValue?.rawValue }
+    }
+
+    /// 계산용 순수 값으로 변환
+    public var entry: CareEntry {
+        CareEntry(type: type, start: start, end: end, amount: amount, unit: unit, detail: detailRaw)
     }
 
     public init(type: CareLogType = .breastFeeding, start: Date = Date()) {

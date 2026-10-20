@@ -171,6 +171,7 @@ private struct CheckupEditSheet: View {
                     }
                 }
             }
+            .formStyle(.grouped)
             .navigationTitle("검사 메모")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) { Button("완료") { dismiss() } }
@@ -203,6 +204,7 @@ private struct CheckupAddSheet: View {
                 TextField("검사 이름", text: $title)
                 DatePicker("날짜", selection: $date, displayedComponents: .date)
             }
+            .formStyle(.grouped)
             .navigationTitle("검사 추가")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("취소") { dismiss() } }

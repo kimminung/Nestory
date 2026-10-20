@@ -127,3 +127,37 @@ struct RulesUnavailableView: View {
         )
     }
 }
+
+/// 규칙 데이터의 출처·기준일과 검증 상태를 보여 주는 배너. 미검증이면 경고를 덧붙인다.
+struct RuleMetaBanner: View {
+    let meta: RuleMeta
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: NestorySpacing.s) {
+            DisclaimerBanner(
+                effectiveDate: meta.effectiveFrom?.date(),
+                sourceName: meta.sourceName,
+                sourceURL: meta.sourceURL.flatMap(URL.init(string:))
+            )
+            if meta.status != .verified {
+                Label("아직 공식 출처로 확인하지 못한 안내예요. 꼭 공식 사이트나 병원에서 다시 확인하세요.", systemImage: "exclamationmark.triangle.fill")
+                    .font(.nestory(.footnote, weight: .semibold))
+                    .foregroundStyle(NestoryColor.danger)
+            }
+        }
+    }
+}
+
+/// 카드 안에서 쓰는 제목 + 부제 한 줄
+struct SectionTitle: View {
+    let title: LocalizedStringKey
+
+    init(_ title: LocalizedStringKey) { self.title = title }
+
+    var body: some View {
+        Text(title)
+            .font(.nestory(.headline))
+            .foregroundStyle(NestoryColor.cocoa)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}

@@ -3,7 +3,8 @@ import SwiftData
 
 /// 스키마 v1. 모델을 추가/변경할 때는 새 VersionedSchema 와 마이그레이션 단계를 만든다.
 public enum NestorySchemaV1: VersionedSchema {
-    public static var versionIdentifier: Schema.Version { Schema.Version(1, 0, 0) }
+    /// 1.1.0: CareLog.detailRaw(옵셔널) 추가 — 옵셔널 속성 추가라 기존 저장소가 자동으로 이어진다.
+    public static var versionIdentifier: Schema.Version { Schema.Version(1, 1, 0) }
 
     public static var models: [any PersistentModel.Type] {
         [

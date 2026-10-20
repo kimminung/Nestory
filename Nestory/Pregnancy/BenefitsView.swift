@@ -43,18 +43,7 @@ private struct BenefitsContent: View {
             )
             ScrollView {
                 VStack(alignment: .leading, spacing: NestorySpacing.l) {
-                    VStack(alignment: .leading, spacing: NestorySpacing.s) {
-                        DisclaimerBanner(
-                            effectiveDate: meta.effectiveFrom?.date(),
-                            sourceName: meta.sourceName,
-                            sourceURL: meta.sourceURL.flatMap(URL.init(string:))
-                        )
-                        if meta.status != .verified {
-                            Label("아직 공식 출처로 확인하지 못한 안내예요. 신청 전에 꼭 공식 사이트에서 확인하세요.", systemImage: "exclamationmark.triangle.fill")
-                                .font(.nestory(.footnote, weight: .semibold))
-                                .foregroundStyle(NestoryColor.danger)
-                        }
-                    }
+                    RuleMetaBanner(meta: meta)
 
                     ForEach(items(catalog: catalog)) { item in
                         BenefitCard(item: item, task: task[item.ruleID], now: now)

@@ -14,6 +14,7 @@ struct PregnancyHomeView: View {
     @Query(filter: #Predicate<TaskItem> { $0.doneAt == nil }, sort: \TaskItem.due)
     private var openTasks: [TaskItem]
     @State private var isEditingDueDate = false
+    @State private var isRecordingBirth = false
 
     private var now: Date { referenceDate ?? Date() }
     private var dueDate: Date? { child.pregnancy?.dueDate ?? child.dueDate }
@@ -47,6 +48,7 @@ struct PregnancyHomeView: View {
         .toolbar {
             ToolbarItem {
                 Menu {
+                    Button("아이가 태어났어요", systemImage: "heart.circle.fill") { isRecordingBirth = true }
                     Button("예정일 수정", systemImage: "calendar.badge.clock") { isEditingDueDate = true }
                 } label: {
                     Label("더 보기", systemImage: "ellipsis.circle")
@@ -55,6 +57,9 @@ struct PregnancyHomeView: View {
         }
         .sheet(isPresented: $isEditingDueDate) {
             DueDateEditorSheet(child: child, now: now)
+        }
+        .sheet(isPresented: $isRecordingBirth) {
+            BirthSheet(child: child, now: now)
         }
     }
 

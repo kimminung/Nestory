@@ -1,0 +1,198 @@
+{
+  "sourceLanguage" : "ko",
+  "strings" : {
+    "Nestory" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nestory"
+          }
+        }
+      }
+    },
+    "가족 일정이 곧 열려요" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가족 일정이 곧 열려요"
+          }
+        }
+      }
+    },
+    "가족·설정이 곧 열려요" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가족·설정이 곧 열려요"
+          }
+        }
+      }
+    },
+    "검진·접종·휴직 일정을 한 타임라인에 모아요." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검진·접종·휴직 일정을 한 타임라인에 모아요."
+          }
+        }
+      }
+    },
+    "기록" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기록"
+          }
+        }
+      }
+    },
+    "더보기" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더보기"
+          }
+        }
+      }
+    },
+    "디자인 갤러리" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "디자인 갤러리"
+          }
+        }
+      }
+    },
+    "디자인 갤러리 (개발용)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "디자인 갤러리 (개발용)"
+          }
+        }
+      }
+    },
+    "보호자 초대, 잠금, 내보내기를 여기서 설정해요." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "보호자 초대, 잠금, 내보내기를 여기서 설정해요."
+          }
+        }
+      }
+    },
+    "부부 휴직을 함께 계획하고 예상 소득을 비교해요." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "부부 휴직을 함께 계획하고 예상 소득을 비교해요."
+          }
+        }
+      }
+    },
+    "수유·수면·기저귀를 세 번 탭으로 남겨요." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "수유·수면·기저귀를 세 번 탭으로 남겨요."
+          }
+        }
+      }
+    },
+    "오늘의 요약이 곧 여기에 나타나요" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오늘의 요약이 곧 여기에 나타나요"
+          }
+        }
+      }
+    },
+    "육아 기록이 곧 열려요" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "육아 기록이 곧 열려요"
+          }
+        }
+      }
+    },
+    "일정" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일정"
+          }
+        }
+      }
+    },
+    "임신 주차와 다음 할 일을 한눈에 보여 드릴게요." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "임신 주차와 다음 할 일을 한눈에 보여 드릴게요."
+          }
+        }
+      }
+    },
+    "저장소를 열 수 없어요" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장소를 열 수 없어요"
+          }
+        }
+      }
+    },
+    "제도·휴직" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제도·휴직"
+          }
+        }
+      }
+    },
+    "홈" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "홈"
+          }
+        }
+      }
+    },
+    "휴가·휴직 계획이 곧 열려요" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "휴가·휴직 계획이 곧 열려요"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

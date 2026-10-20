@@ -6,6 +6,12 @@
 	objectVersion = 90;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		000000000000000220000001 /* NestoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 000000000000000210000001 /* NestoryKit */; };
+		000000000000000220000002 /* NestoryData in Frameworks */ = {isa = PBXBuildFile; productRef = 000000000000000210000002 /* NestoryData */; };
+		000000000000000220000003 /* NestoryUI in Frameworks */ = {isa = PBXBuildFile; productRef = 000000000000000210000003 /* NestoryUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* Nestory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nestory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -22,6 +28,9 @@
 		000000000000000130000000 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				000000000000000220000001 /* NestoryKit in Frameworks */,
+				000000000000000220000002 /* NestoryData in Frameworks */,
+				000000000000000220000003 /* NestoryUI in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -60,7 +69,12 @@
 				000000000000000000000010 /* Nestory */,
 			);
 			name = Nestory;
-			productName = MyApp;
+				packageProductDependencies = (
+					000000000000000210000001 /* NestoryKit */,
+					000000000000000210000002 /* NestoryData */,
+					000000000000000210000003 /* NestoryUI */,
+				);
+			productName = Nestory;
 			productReference = 000000000000000000000120 /* Nestory.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -80,14 +94,19 @@
 				};
 			};
 			buildConfigurationList = 000000000000000010000000 /* Build configuration list for PBXProject "Nestory" */;
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				ko,
 				en,
 				Base,
 			);
 			mainGroup = 000000000000000000000001;
 			minimizedProjectReferenceProxies = 1;
+				packageReferences = (
+					000000000000000200000001 /* XCLocalSwiftPackageReference "Packages/NestoryKit" */,
+					000000000000000200000002 /* XCLocalSwiftPackageReference "Packages/NestoryUI" */,
+				);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 000000000000000000000020 /* Products */;
 			projectDirPath = "";
@@ -257,6 +276,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Nestory;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -270,7 +291,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "devplaceholder.$(PROJECT_UNIQUE_VALUE:identifier).$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kimminung.nestory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -280,7 +301,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
@@ -295,6 +316,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Nestory;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -308,7 +331,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "devplaceholder.$(PROJECT_UNIQUE_VALUE:identifier).$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kimminung.nestory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -318,7 +341,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;
@@ -343,6 +366,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		000000000000000200000001 /* XCLocalSwiftPackageReference "Packages/NestoryKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/NestoryKit;
+		};
+		000000000000000200000002 /* XCLocalSwiftPackageReference "Packages/NestoryUI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/NestoryUI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		000000000000000210000001 /* NestoryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 000000000000000200000001 /* XCLocalSwiftPackageReference "Packages/NestoryKit" */;
+			productName = NestoryKit;
+		};
+		000000000000000210000002 /* NestoryData */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 000000000000000200000001 /* XCLocalSwiftPackageReference "Packages/NestoryKit" */;
+			productName = NestoryData;
+		};
+		000000000000000210000003 /* NestoryUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 000000000000000200000002 /* XCLocalSwiftPackageReference "Packages/NestoryUI" */;
+			productName = NestoryUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 000000000000000000000000 /* Project object */;
 }

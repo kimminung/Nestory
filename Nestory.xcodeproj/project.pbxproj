@@ -69,11 +69,11 @@
 				000000000000000000000010 /* Nestory */,
 			);
 			name = Nestory;
-				packageProductDependencies = (
-					000000000000000210000001 /* NestoryKit */,
-					000000000000000210000002 /* NestoryData */,
-					000000000000000210000003 /* NestoryUI */,
-				);
+			packageProductDependencies = (
+				000000000000000210000001 /* NestoryKit */,
+				000000000000000210000002 /* NestoryData */,
+				000000000000000210000003 /* NestoryUI */,
+			);
 			productName = Nestory;
 			productReference = 000000000000000000000120 /* Nestory.app */;
 			productType = "com.apple.product-type.application";
@@ -103,10 +103,10 @@
 			);
 			mainGroup = 000000000000000000000001;
 			minimizedProjectReferenceProxies = 1;
-				packageReferences = (
-					000000000000000200000001 /* XCLocalSwiftPackageReference "Packages/NestoryKit" */,
-					000000000000000200000002 /* XCLocalSwiftPackageReference "Packages/NestoryUI" */,
-				);
+			packageReferences = (
+				000000000000000200000001 /* XCLocalSwiftPackageReference "Packages/NestoryKit" */,
+				000000000000000200000002 /* XCLocalSwiftPackageReference "Packages/NestoryUI" */,
+			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 000000000000000000000020 /* Products */;
 			projectDirPath = "";

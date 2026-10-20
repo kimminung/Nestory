@@ -69,16 +69,16 @@ gantt
 - [ ] P1.4 가정 목록 확인: 소득 시뮬레이터(일 단위 안분, 중복 시 우선순위)·6+6(부모 모두 휴직 필요 가정)·출산전후휴가 소득(통상임금 100%, 상한 없음) 단순화가 실제 제도와 맞는지
 
 ## M2 · 임신·출산 준비 (P0)
-- [ ] T2.1 온보딩: 가족 → 상태(임신/출산) → 예정일 → 알림 허용
-- [ ] T2.2 홈(임신 모드): 주차 히어로 + 다음 할 일
-- [ ] T2.3 주차 타임라인 + 과일 크기 카드(에셋 연동, 임시 SF Symbol 대체)
-- [ ] T2.4 산전검사 목록·완료 체크·메모
-- [ ] T2.5 체크리스트(출산 준비물·입원 가방·행정), 사용자 항목 추가/정렬
-- [ ] T2.6 바우처·지원금 안내 카드(링크, 신청 시점)
-- [ ] T2.7 (P1) 태동 카운터, 진통 타이머
-- [ ] T2.8 (P1) 산모 기록(체중·혈압·혈당) + 차트
-- [ ] T2.9 (P1) 병원/조리원 연락처
-- [ ] Q2 3플랫폼 수동 QA, 접근성 감사
+- [x] T2.1 온보딩 5단계(환영→상태→예정일/출생일→이름→알림). 예정일 4가지 입력(생리일·초음파·시험관·직접)+검증 메시지, `FamilySetup`(NestoryData) 테스트
+- [x] T2.2 임신 홈: 주차·D-day·분기·진행률 히어로, 이번 주 아기 크기, 다가오는 일정 4개(완료 체크), 바로가기 5개, 예정일 수정 시트
+- [x] T2.3 주차 타임라인(14칸, 현재 주차 강조·자동 스크롤, 구간 내 검진·할 일). 과일 이미지는 D3 에셋 전까지 임시 아이콘(`assetName` 은 `week_NN_name` 규칙으로 준비됨)
+- [x] T2.4 산전 검사: 권장 구간·상태 배지·완료 체크·메모·직접 추가/삭제
+- [x] T2.5 체크리스트 4그룹 32항목(`rules/checklist-prenatal.json`)·진행률·사용자 항목 추가/삭제(길게 누름·우클릭). 순서 직접 정렬은 `sortIndex` 필드(스키마 V2)가 필요해 보류
+- [x] T2.6 제도·지원금 카드(바우처·행정·휴가 계획): 신청 가능 시기·공식 링크(https)·완료 체크, "참고용·미검증" 배너
+- [x] T2.7 태동 카운터(세션 저장·시간당 횟수), 진통 타이머(간격·지속 계산, 사용자 조정 가능한 "5-1-1" 참고 점검, 기록은 `@AppStorage` JSON — 스키마 변경 없음)
+- [ ] T2.8 (P1) 산모 기록(체중·혈압·혈당) + 차트 — 새 모델이 필요해 스키마 V2 와 함께 진행(M3 이후로 이동)
+- [ ] T2.9 (P1) 병원/조리원 연락처 — 새 모델이 필요해 스키마 V2 와 함께 진행(M3 이후로 이동)
+- [~] Q2 테스트 130개(NestoryKit 108·NestoryData 19·NestoryUI 3), 커버리지 NestoryKit 97.5%·NestoryData 78.4%, 3플랫폼 빌드 경고 0, macOS 프리뷰로 10개 화면 렌더 확인. 🔒 iPhone·iPad 실화면, VoiceOver·Dynamic Type 감사는 미실시(시뮬레이터 협의 후)
 
 ## M3 · 육아 기록 (P0)
 - [ ] T3.1 `CareLog` CRUD, 종류별 입력 시트
@@ -97,7 +97,7 @@ gantt
 
 ## M4 · 일정·알림·위젯
 - [ ] T4.1 통합 타임라인(검진·접종·휴직·알바·사용자 일정)
-- [ ] T4.2 로컬 알림 등록/갱신/취소 (규칙 변경 시 재계획)
+- [~] T4.2 로컬 알림 등록/갱신/취소 — M2 에서 `NotificationService`(권한·전체 재예약)와 일정 변경 감지 재예약까지 구현. 남은 것: 조용한 시간 사용자 설정, 실기기 검증
 - [ ] T4.3 위젯: D-day, 다음 일정, 마지막 수유
 - [ ] T4.4 Mac `MenuBarExtra` 빠른 기록
 - [ ] T4.5 (P1) EventKit 내보내기
@@ -171,6 +171,7 @@ gantt
 ## 진행 로그
 | 날짜 | 내용 |
 |---|---|
+| 2026-10-20 | M2 완료(P0+T2.7). 앱: `Onboarding/ Home/ Pregnancy/ Common/ More/ Support/` + 규칙 3개 추가(`pregnancy-weeks` `checklist-prenatal`, `prenatal.json` 링크). NestoryData: `PrenatalPlanSync`(규칙→SwiftData 멱등 동기화, 예정일 변경 시 미완료만 이동)·`FamilySetup`. **함정**: macOS 27 의 `List`(NSOutlineView)가 행 안에 `contentShape` 가 있는 버튼 2개(토글+상세)를 두면 `TableViewListCore_Mac2` 에서 크래시 → 검사·체크리스트는 `ScrollView`+카드로 구현(원인은 최소 예제로 좁혔으나 SDK 쪽 문제로 판단, 다른 List 화면은 정상). 스키마 변경(V2) 항목(산모 기록·연락처·정렬)은 보류. |
 | 2026-10-20 | M1 완료(엔진). 구조: `Core/ Pregnancy/ Rules/ Vaccine/ Growth/ Leave/ SideWork/ Notifications/` + `Resources/rules/*.json`. 규칙 값은 전부 초안(unverified), 성장도표 LMS 는 데이터 없음(missing) — 웹 검증은 하지 않았음. 앱 UI 연결은 M2 부터. |
 | 2026-10-20 | M0 완료. 구조: 앱 타깃 + `Packages/NestoryKit`(NestoryKit 순수 도메인 / NestoryData SwiftData 스키마) + `Packages/NestoryUI`. 설계 변경: `LeavePlan`은 가족 단위(두 보호자 기간을 함께 담음, `LeavePeriod.guardian` 으로 구분). 시뮬레이터는 쓰지 않음(빌드는 generic 목적지, 테스트는 `swift test`, 프리뷰는 macOS). |
 | 2026-10-20 | 문서 5종 초안 작성. 정책 수치는 웹 검증 못함 → P1.1 로 구현 전 검증 필수. Blender 연결 생략(Claude Desktop 위임). 코드는 미착수. |

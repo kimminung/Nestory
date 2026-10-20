@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "id": "pregnancy-weeks",
+    "schemaVersion": 1,
+    "status": "unverified",
+    "effectiveFrom": null,
+    "verifiedAt": null,
+    "sourceName": "일반적으로 쓰이는 크기 비유",
+    "sourceURL": "",
+    "note": "의학 정보가 아니라 흔히 쓰는 비유예요. 아이마다 달라요."
+  },
+  "entries": [
+    {
+      "week": 4,
+      "comparison": "양귀비씨",
+      "assetName": "week_04_poppy_seed"
+    },
+    {
+      "week": 6,
+      "comparison": "렌틸콩",
+      "assetName": "week_06_lentil"
+    },
+    {
+      "week": 8,
+      "comparison": "산딸기",
+      "assetName": "week_08_raspberry"
+    },
+    {
+      "week": 10,
+      "comparison": "금귤",
+      "assetName": "week_10_kumquat"
+    },
+    {
+      "week": 12,
+      "comparison": "라임",
+      "assetName": "week_12_lime"
+    },
+    {
+      "week": 14,
+      "comparison": "레몬",
+      "assetName": "week_14_lemon"
+    },
+    {
+      "week": 16,
+      "comparison": "아보카도",
+      "assetName": "week_16_avocado"
+    },
+    {
+      "week": 20,
+      "comparison": "바나나",
+      "assetName": "week_20_banana"
+    },
+    {
+      "week": 24,
+      "comparison": "옥수수",
+      "assetName": "week_24_corn"
+    },
+    {
+      "week": 28,
+      "comparison": "가지",
+      "assetName": "week_28_eggplant"
+    },
+    {
+      "week": 32,
+      "comparison": "파인애플",
+      "assetName": "week_32_pineapple"
+    },
+    {
+      "week": 36,
+      "comparison": "로메인 상추",
+      "assetName": "week_36_romaine"
+    },
+    {
+      "week": 38,
+      "comparison": "호박",
+      "assetName": "week_38_pumpkin"
+    },
+    {
+      "week": 40,
+      "comparison": "수박",
+      "assetName": "week_40_watermelon"
+    }
+  ]
+}

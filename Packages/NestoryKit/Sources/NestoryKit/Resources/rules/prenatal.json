@@ -24,7 +24,8 @@
       },
       "recommended": {
         "weeks": 8
-      }
+      },
+      "link": "https://www.nhis.or.kr"
     },
     {
       "id": "prenatal.firstScreening",
@@ -41,7 +42,8 @@
       },
       "recommended": {
         "weeks": 12
-      }
+      },
+      "link": null
     },
     {
       "id": "prenatal.postpartumCare",
@@ -57,7 +59,8 @@
       },
       "recommended": {
         "weeks": 16
-      }
+      },
+      "link": null
     },
     {
       "id": "prenatal.secondScreening",
@@ -73,7 +76,8 @@
       },
       "recommended": {
         "weeks": 16
-      }
+      },
+      "link": null
     },
     {
       "id": "prenatal.leavePlanning",
@@ -89,7 +93,8 @@
       },
       "recommended": {
         "weeks": 20
-      }
+      },
+      "link": "https://www.work24.go.kr"
     },
     {
       "id": "prenatal.detailedUltrasound",
@@ -105,7 +110,8 @@
       },
       "recommended": {
         "weeks": 22
-      }
+      },
+      "link": null
     },
     {
       "id": "prenatal.gestationalDiabetes",
@@ -121,7 +127,8 @@
       },
       "recommended": {
         "weeks": 26
-      }
+      },
+      "link": null
     },
     {
       "id": "prenatal.babyItems",
@@ -137,7 +144,8 @@
       },
       "recommended": {
         "weeks": 30
-      }
+      },
+      "link": null
     },
     {
       "id": "prenatal.maternityLeaveNotice",
@@ -153,7 +161,8 @@
       },
       "recommended": {
         "weeks": 32
-      }
+      },
+      "link": "https://www.work24.go.kr"
     },
     {
       "id": "prenatal.hospitalBag",
@@ -169,7 +178,8 @@
       },
       "recommended": {
         "weeks": 35
-      }
+      },
+      "link": null
     },
     {
       "id": "prenatal.lateTests",
@@ -185,7 +195,8 @@
       },
       "recommended": {
         "weeks": 36
-      }
+      },
+      "link": null
     },
     {
       "id": "birth.registration",
@@ -201,7 +212,8 @@
       },
       "recommended": {
         "days": 7
-      }
+      },
+      "link": "https://www.gov.kr"
     },
     {
       "id": "birth.insuranceDependent",
@@ -217,7 +229,8 @@
       },
       "recommended": {
         "days": 14
-      }
+      },
+      "link": "https://www.nhis.or.kr"
     },
     {
       "id": "birth.firstMeetingVoucher",
@@ -233,7 +246,8 @@
       },
       "recommended": {
         "days": 14
-      }
+      },
+      "link": "https://www.bokjiro.go.kr"
     },
     {
       "id": "birth.childBenefits",
@@ -249,7 +263,8 @@
       },
       "recommended": {
         "days": 14
-      }
+      },
+      "link": "https://www.bokjiro.go.kr"
     }
   ]
 }

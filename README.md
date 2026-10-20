@@ -11,6 +11,10 @@ iPhone · iPad · Mac, 그리고 Apple Vision Pro
 
 `SwiftUI` `SwiftData` `CloudKit` `WidgetKit` `FoundationModels` `visionOS`
 
+
+https://github.com/user-attachments/assets/52abe275-dbf3-4d3d-a64c-4d2bdb4627bd
+
+
 <img src="Docs/media/nestory-intro.gif" alt="네스토리 기능 소개 하이라이트 (콘셉트 영상)" width="720">
 
 <sub>🎬 나레이션과 음악이 들어간 전체 영상은 아래 <a href="#-소개-영상"><b>소개 영상</b></a>에서 볼 수 있어요</sub>

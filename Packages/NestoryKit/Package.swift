@@ -11,7 +11,11 @@ let package = Package(
         .library(name: "NestoryData", targets: ["NestoryData"]),
     ],
     targets: [
-        .target(name: "NestoryKit"),
+        .target(
+            name: "NestoryKit",
+            // 제도·일정 규칙 JSON. 숫자는 코드에 넣지 않고 여기에만 둔다.
+            resources: [.copy("Resources/rules")]
+        ),
         .target(name: "NestoryData", dependencies: ["NestoryKit"]),
         .testTarget(name: "NestoryKitTests", dependencies: ["NestoryKit"]),
         .testTarget(name: "NestoryDataTests", dependencies: ["NestoryData", "NestoryKit"]),

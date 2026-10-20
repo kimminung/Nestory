@@ -52,19 +52,21 @@ gantt
 - [x] Q0 macOS·iOS Simulator·visionOS Simulator 빌드 통과(generic 목적지), 패키지 테스트 11개 통과(NestoryKit 8 + NestoryUI 3)
 
 ## M1 · 도메인 엔진 (`NestoryKit`) — UI 없이 `swift test`
-- [ ] T1.1 `PregnancyCalculator`: LMP/초음파/IVF → 예정일, 주+일수, D-day
-- [ ] T1.2 `PrenatalScheduleRules` → 검진·바우처·준비물 자동 생성 (rules/prenatal.json)
-- [ ] T1.3 `VaccineScheduler` (rules/vaccine.json), 생일 기준 일정·지연 접종 보정
-- [ ] T1.4 `CheckupScheduler` 영유아 건강검진 시기
-- [ ] T1.5 `GrowthPercentile` (LMS 데이터 → 백분위, z-score), 성별·월령 보간
-- [ ] T1.6 `LeaveEngine`: RuleSet 로더 + 제도별 가능 기간/한도/겹침 검증
-- [ ] T1.7 `IncomeSimulator`: 월별 급여·상한·하한, 부부 합산, 시나리오 비교
-- [ ] T1.8 `SideWorkGuard`: 임계 설정 기반 경고 판단(판정 아님)
-- [ ] T1.9 `NotificationPlanner`: 일정 → 알림 스케줄(D-7/D-1/당일, 조용한 시간)
-- [ ] T1.10 `AgeFormatter`: "만 N개월", "N주 M일", 한국어 날짜
-- [ ] P1.1 🔒 모든 규칙 수치를 **공식 출처로 검증**하고 `verifiedAt`·`sourceURL` 기입 (PRD_Tech §2.4.1 표는 미검증 초안)
-- [ ] P1.2 규칙 JSON 스키마 + 만료(180일) 경고 테스트
-- [ ] Q1 경계값 테스트 표(예정일·주차·접종 간격·휴직 겹침·급여 상한), 커버리지 보고
+- [x] T1.1 `PregnancyCalculator`: LMP/초음파/IVF → 예정일, 주+일수, D-day, 삼분기
+- [x] T1.2 `ScheduleGenerator` + `rules/prenatal.json`(검진·바우처·준비물·출생 후 행정 15항목). 출생일 모르면 예정일로 추정(`isEstimated`)
+- [x] T1.3 `VaccineScheduler` + `rules/vaccine.json`(10종), 지연 시 다음 차수 최소 간격 따라잡기, 상태(완료/예정/가능/지연)
+- [x] T1.4 영유아 건강검진 8회(`rules/infant-checkup.json`, `ScheduleGenerator` 공용)
+- [x] T1.5 `GrowthPercentile` 엔진(z·백분위·역변환·보간·밴드). 🔒 LMS 데이터는 없음 → P1.3
+- [x] T1.6 `LeaveEngine`: 규칙 로더 + 14가지 검증(출산전후·배우자·육아휴직 한도/자녀 연령·6+6·근로시간 단축·겹침) + 신청 마감일
+- [x] T1.7 `IncomeSimulator`: 일 단위 안분, 종류 우선순위, 6+6 월별 상한, 근로시간 단축 지원, 부부 합산·기준선 대비 감소액
+- [x] T1.8 `SideWorkGuard`: 육아휴직 중 근무일·월 소득·주 근로시간 임계 경고 + 사전 점검 4항목(판정 아님, 항상 고용센터 확인 안내)
+- [x] T1.9 `NotificationPlanner`: D-7/D-1/당일, 조용한 시간 보정, 지난 알림 제거, 64개 한도
+- [x] T1.10 `AgeFormatter`: "20주 3일", D-day, 생후 N일/만 N개월/만 N세, 백일·돌 (+ M0 `KoreanFormat`)
+- [ ] P1.1 🔒 모든 규칙 수치를 **공식 출처로 검증**하고 `status: verified`·`verifiedAt` 기입 (`prenatal`·`infant-checkup`·`vaccine`·`leave` 4개 JSON 전부 `unverified` 초안). 특히 6+6 월별 상한, 근로시간 단축 지원금, 출생 후 행정 신청 기한, JE·Hib 차수
+- [x] P1.2 규칙 JSON 스키마(`RuleMeta`: status·verifiedAt·출처) + 신선도 판정(180일 경계 테스트) + 번들 파일 일관성 테스트
+- [x] Q1 경계값 테스트 95개(NestoryKit 90 + NestoryData 5), `NestoryKit` 라인 커버리지 97.2%, 3플랫폼 빌드·NestoryUI 테스트 회귀 없음
+- [ ] P1.3 🔒 성장도표 LMS 가져오기: 질병관리청 2017 소아청소년 성장도표(체중·키·머리둘레·BMI, 성별, 월령) 공식 표 → `growth-lms.json` (추정값 입력 금지, 현재 `status: missing`)
+- [ ] P1.4 가정 목록 확인: 소득 시뮬레이터(일 단위 안분, 중복 시 우선순위)·6+6(부모 모두 휴직 필요 가정)·출산전후휴가 소득(통상임금 100%, 상한 없음) 단순화가 실제 제도와 맞는지
 
 ## M2 · 임신·출산 준비 (P0)
 - [ ] T2.1 온보딩: 가족 → 상태(임신/출산) → 예정일 → 알림 허용
@@ -169,5 +171,6 @@ gantt
 ## 진행 로그
 | 날짜 | 내용 |
 |---|---|
+| 2026-10-20 | M1 완료(엔진). 구조: `Core/ Pregnancy/ Rules/ Vaccine/ Growth/ Leave/ SideWork/ Notifications/` + `Resources/rules/*.json`. 규칙 값은 전부 초안(unverified), 성장도표 LMS 는 데이터 없음(missing) — 웹 검증은 하지 않았음. 앱 UI 연결은 M2 부터. |
 | 2026-10-20 | M0 완료. 구조: 앱 타깃 + `Packages/NestoryKit`(NestoryKit 순수 도메인 / NestoryData SwiftData 스키마) + `Packages/NestoryUI`. 설계 변경: `LeavePlan`은 가족 단위(두 보호자 기간을 함께 담음, `LeavePeriod.guardian` 으로 구분). 시뮬레이터는 쓰지 않음(빌드는 generic 목적지, 테스트는 `swift test`, 프리뷰는 macOS). |
 | 2026-10-20 | 문서 5종 초안 작성. 정책 수치는 웹 검증 못함 → P1.1 로 구현 전 검증 필수. Blender 연결 생략(Claude Desktop 위임). 코드는 미착수. |

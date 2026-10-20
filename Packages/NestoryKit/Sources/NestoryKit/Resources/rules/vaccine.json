@@ -1,0 +1,461 @@
+{
+  "meta": {
+    "id": "vaccine",
+    "schemaVersion": 1,
+    "status": "unverified",
+    "effectiveFrom": null,
+    "verifiedAt": null,
+    "sourceName": "질병관리청 예방접종도우미",
+    "sourceURL": "https://nip.kdca.go.kr",
+    "note": "국가예방접종 일정은 작성자 지식 기반 초안이며 공식 출처로 검증되지 않았어요. 검증 후 status=verified, verifiedAt 기입. 독감 등 매년 접종은 포함하지 않았어요."
+  },
+  "vaccines": [
+    {
+      "code": "BCG",
+      "name": "결핵(BCG, 피내용)",
+      "note": "생후 4주 이내",
+      "doses": [
+        {
+          "doseNo": 1,
+          "earliest": {
+            "days": 0
+          },
+          "recommended": {
+            "days": 0
+          },
+          "latest": {
+            "days": 28
+          },
+          "minIntervalDays": null
+        }
+      ]
+    },
+    {
+      "code": "HepB",
+      "name": "B형간염",
+      "note": "0·1·6개월",
+      "doses": [
+        {
+          "doseNo": 1,
+          "earliest": {
+            "days": 0
+          },
+          "recommended": {
+            "days": 0
+          },
+          "latest": {
+            "days": 30
+          },
+          "minIntervalDays": null
+        },
+        {
+          "doseNo": 2,
+          "earliest": {
+            "months": 1
+          },
+          "recommended": {
+            "months": 1
+          },
+          "latest": {
+            "months": 2
+          },
+          "minIntervalDays": 28
+        },
+        {
+          "doseNo": 3,
+          "earliest": {
+            "months": 6
+          },
+          "recommended": {
+            "months": 6
+          },
+          "latest": {
+            "months": 18
+          },
+          "minIntervalDays": 56
+        }
+      ]
+    },
+    {
+      "code": "DTaP",
+      "name": "DTaP(디프테리아·파상풍·백일해)",
+      "note": "2·4·6개월, 15~18개월, 만 4~6세",
+      "doses": [
+        {
+          "doseNo": 1,
+          "earliest": {
+            "months": 2
+          },
+          "recommended": {
+            "months": 2
+          },
+          "latest": {
+            "months": 3
+          },
+          "minIntervalDays": null
+        },
+        {
+          "doseNo": 2,
+          "earliest": {
+            "months": 4
+          },
+          "recommended": {
+            "months": 4
+          },
+          "latest": {
+            "months": 5
+          },
+          "minIntervalDays": 28
+        },
+        {
+          "doseNo": 3,
+          "earliest": {
+            "months": 6
+          },
+          "recommended": {
+            "months": 6
+          },
+          "latest": {
+            "months": 7
+          },
+          "minIntervalDays": 28
+        },
+        {
+          "doseNo": 4,
+          "earliest": {
+            "months": 15
+          },
+          "recommended": {
+            "months": 15
+          },
+          "latest": {
+            "months": 19
+          },
+          "minIntervalDays": 180
+        },
+        {
+          "doseNo": 5,
+          "earliest": {
+            "years": 4
+          },
+          "recommended": {
+            "years": 4
+          },
+          "latest": {
+            "years": 7
+          },
+          "minIntervalDays": 180
+        }
+      ]
+    },
+    {
+      "code": "IPV",
+      "name": "폴리오(IPV)",
+      "note": "2·4·6~18개월, 만 4~6세",
+      "doses": [
+        {
+          "doseNo": 1,
+          "earliest": {
+            "months": 2
+          },
+          "recommended": {
+            "months": 2
+          },
+          "latest": {
+            "months": 3
+          },
+          "minIntervalDays": null
+        },
+        {
+          "doseNo": 2,
+          "earliest": {
+            "months": 4
+          },
+          "recommended": {
+            "months": 4
+          },
+          "latest": {
+            "months": 5
+          },
+          "minIntervalDays": 28
+        },
+        {
+          "doseNo": 3,
+          "earliest": {
+            "months": 6
+          },
+          "recommended": {
+            "months": 6
+          },
+          "latest": {
+            "months": 18
+          },
+          "minIntervalDays": 28
+        },
+        {
+          "doseNo": 4,
+          "earliest": {
+            "years": 4
+          },
+          "recommended": {
+            "years": 4
+          },
+          "latest": {
+            "years": 7
+          },
+          "minIntervalDays": 28
+        }
+      ]
+    },
+    {
+      "code": "Hib",
+      "name": "b형 헤모필루스 인플루엔자(Hib)",
+      "note": "제품에 따라 횟수가 달라질 수 있어요.",
+      "doses": [
+        {
+          "doseNo": 1,
+          "earliest": {
+            "months": 2
+          },
+          "recommended": {
+            "months": 2
+          },
+          "latest": {
+            "months": 3
+          },
+          "minIntervalDays": null
+        },
+        {
+          "doseNo": 2,
+          "earliest": {
+            "months": 4
+          },
+          "recommended": {
+            "months": 4
+          },
+          "latest": {
+            "months": 5
+          },
+          "minIntervalDays": 28
+        },
+        {
+          "doseNo": 3,
+          "earliest": {
+            "months": 6
+          },
+          "recommended": {
+            "months": 6
+          },
+          "latest": {
+            "months": 7
+          },
+          "minIntervalDays": 28
+        },
+        {
+          "doseNo": 4,
+          "earliest": {
+            "months": 12
+          },
+          "recommended": {
+            "months": 12
+          },
+          "latest": {
+            "months": 16
+          },
+          "minIntervalDays": 56
+        }
+      ]
+    },
+    {
+      "code": "PCV",
+      "name": "폐렴구균(PCV)",
+      "note": "2·4·6개월, 12~15개월",
+      "doses": [
+        {
+          "doseNo": 1,
+          "earliest": {
+            "months": 2
+          },
+          "recommended": {
+            "months": 2
+          },
+          "latest": {
+            "months": 3
+          },
+          "minIntervalDays": null
+        },
+        {
+          "doseNo": 2,
+          "earliest": {
+            "months": 4
+          },
+          "recommended": {
+            "months": 4
+          },
+          "latest": {
+            "months": 5
+          },
+          "minIntervalDays": 28
+        },
+        {
+          "doseNo": 3,
+          "earliest": {
+            "months": 6
+          },
+          "recommended": {
+            "months": 6
+          },
+          "latest": {
+            "months": 7
+          },
+          "minIntervalDays": 28
+        },
+        {
+          "doseNo": 4,
+          "earliest": {
+            "months": 12
+          },
+          "recommended": {
+            "months": 12
+          },
+          "latest": {
+            "months": 16
+          },
+          "minIntervalDays": 56
+        }
+      ]
+    },
+    {
+      "code": "MMR",
+      "name": "홍역·유행성이하선염·풍진(MMR)",
+      "note": "12~15개월, 만 4~6세",
+      "doses": [
+        {
+          "doseNo": 1,
+          "earliest": {
+            "months": 12
+          },
+          "recommended": {
+            "months": 12
+          },
+          "latest": {
+            "months": 16
+          },
+          "minIntervalDays": null
+        },
+        {
+          "doseNo": 2,
+          "earliest": {
+            "years": 4
+          },
+          "recommended": {
+            "years": 4
+          },
+          "latest": {
+            "years": 7
+          },
+          "minIntervalDays": 28
+        }
+      ]
+    },
+    {
+      "code": "Varicella",
+      "name": "수두",
+      "note": "12~15개월",
+      "doses": [
+        {
+          "doseNo": 1,
+          "earliest": {
+            "months": 12
+          },
+          "recommended": {
+            "months": 12
+          },
+          "latest": {
+            "months": 16
+          },
+          "minIntervalDays": null
+        }
+      ]
+    },
+    {
+      "code": "HepA",
+      "name": "A형간염",
+      "note": "12~23개월, 6개월 이상 간격",
+      "doses": [
+        {
+          "doseNo": 1,
+          "earliest": {
+            "months": 12
+          },
+          "recommended": {
+            "months": 12
+          },
+          "latest": {
+            "months": 24
+          },
+          "minIntervalDays": null
+        },
+        {
+          "doseNo": 2,
+          "earliest": {
+            "months": 18
+          },
+          "recommended": {
+            "months": 18
+          },
+          "latest": {
+            "months": 36
+          },
+          "minIntervalDays": 180
+        }
+      ]
+    },
+    {
+      "code": "JE",
+      "name": "일본뇌염(불활성화)",
+      "note": "12~23개월 1·2차(1개월 간격), 3차는 2차 12개월 후. 만 6세·12세 추가접종은 이 목록에 포함하지 않았어요.",
+      "doses": [
+        {
+          "doseNo": 1,
+          "earliest": {
+            "months": 12
+          },
+          "recommended": {
+            "months": 12
+          },
+          "latest": {
+            "months": 24
+          },
+          "minIntervalDays": null
+        },
+        {
+          "doseNo": 2,
+          "earliest": {
+            "months": 13
+          },
+          "recommended": {
+            "months": 13
+          },
+          "latest": {
+            "months": 25
+          },
+          "minIntervalDays": 28
+        },
+        {
+          "doseNo": 3,
+          "earliest": {
+            "months": 24
+          },
+          "recommended": {
+            "months": 25
+          },
+          "latest": {
+            "months": 36
+          },
+          "minIntervalDays": 330
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "sourceLanguage" : "ko",
+  "strings" : {
+    "disclaimer.base" : {
+      "comment" : "제도 화면 상단 고지 배너의 앞부분",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "참고용"
+          }
+        }
+      }
+    },
+    "disclaimer.effective %@" : {
+      "comment" : "기준일 표시. %@ 는 날짜 문자열",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기준일 %@"
+          }
+        }
+      }
+    },
+    "disclaimer.source %@" : {
+      "comment" : "출처 링크 라벨. %@ 는 출처 이름",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "출처: %@"
+          }
+        }
+      }
+    },
+    "disclaimer.verify" : {
+      "comment" : "확정 안내는 공식 기관 확인을 권하는 문구",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확정 안내는 고용센터·사업장에서 확인하세요"
+          }
+        }
+      }
+    },
+    "기록하기" : {
+
+    },
+    "마지막 수유 2시간 전" : {
+
+    },
+    "아직 기록이 없어요" : {
+
+    },
+    "임신 20주 3일" : {
+
+    },
+    "첫 수유를 기록해 볼까요?" : {
+
+    },
+    "출산까지 D-137" : {
+
+    }
+  },
+  "version" : "1.0"
+}

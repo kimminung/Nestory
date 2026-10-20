@@ -11,7 +11,7 @@ iPhone · iPad · Mac, 그리고 Apple Vision Pro
 
 `SwiftUI` `SwiftData` `CloudKit` `WidgetKit` `FoundationModels` `visionOS`
 
-> 상태: **기획·문서 단계** (코드 미착수) · 2026-10-20
+> 상태: **M0 완료**(프로젝트 기반·디자인 시스템·데이터 스키마·앱 셸) · 2026-10-20
 
 </div>
 
@@ -203,7 +203,7 @@ flowchart LR
 Prenatal prep · baby care logs · family schedule · leave & parental-leave planning · side-work tracking during leave.
 Built with SwiftUI for iPhone, iPad and Mac first, then extended to Apple Vision Pro. Korean-market first.
 
-> Status: **planning/documentation stage** (no code yet) · 2026-10-20
+> Status: **M0 done** (project foundation, design system, data schema, app shell) · 2026-10-20
 
 ## Overview
 Nestory gathers everything a Korean family has to juggle around a new baby into one shared place for both parents:

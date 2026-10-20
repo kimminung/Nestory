@@ -1,6 +1,7 @@
 # 네스토리(Nestory) — TASKS (단일 문서)
 
 > 작성: 2026-10-20 · 규칙: 마일스톤 하나씩 진행 → 회귀 확인 → 이 문서 체크 → 커밋 → 정지/보고
+> 작업 규칙(다른 프로젝트와 시뮬레이터 공유): 사용 전 `xcrun simctl list devices booted` 로 확인, 전용 기기 `Nestory *` 만 사용, 다른 기기 종료·`killall`·CoreSimulator 재시작 금지. 가능하면 `swift test`·generic 빌드·macOS 프리뷰로 검증.
 > 표기: `[ ]` 대기 · `[~]` 진행 · `[x]` 완료 · 🔒 사용자 결정/외부 작업 필요
 > 트랙: **T**(기술) · **D**(디자인/에셋) · **P**(제도 데이터·검증) · **Q**(품질)
 
@@ -33,22 +34,22 @@ gantt
 - [ ] 🔒 D-03 한글 포인트 폰트 번들 여부 (Gowun Dodum / Jua / 시스템만)
 - [ ] 🔒 D-04 수익 모델(v1 무료 전제 확인)
 - [ ] 🔒 D-05 Blender 에셋 제작 경로: Claude Desktop 에 [BLENDER_ASSET_BRIEF.md](BLENDER_ASSET_BRIEF.md) 전달 (이 세션에서는 Blender MCP 미사용)
-- [ ] 🔒 D-06 GitHub 레포 생성 (문서 완료 후 사용자 요청 시)
+- [x] D-06 GitHub 레포 생성 (사용자가 GitHub Desktop 으로 생성, `~/Desktop/Nestory`)
 
 ---
 
 ## M0 · 프로젝트 기반 & 디자인 시스템
-- [ ] T0.1 기존 `MyApp` 을 `Nestory` 으로 개명, 멀티플랫폼(iOS·iPadOS·macOS) 단일 타깃 구성
-- [ ] T0.2 로컬 Swift 패키지 `NestoryKit`, `NestoryUI` 생성, 앱 연결 (pbxproj 패키지 참조는 마지막에 일괄)
-- [ ] T0.3 Swift 6 언어 모드, 린트/포맷 규칙, `.gitignore`, LFS(대용량 에셋) 설정
-- [ ] T0.4 String Catalog 초기화(ko), `ko_KR` 로케일 유틸
-- [ ] T0.5 `NestoryUI` 디자인 토큰: 색(라이트/다크/밤), 타이포, 간격, 모서리, 그림자
-- [ ] T0.6 컴포넌트 1차: `NestoryCard`, `QuickLogButton`, `Chip`, `EmptyState`, `DisclaimerBanner`
-- [ ] T0.7 토큰 대비 테스트(WCAG AA 자동 검증) — Swift Testing
-- [ ] T0.8 SwiftData 스키마 v1 + CloudKit 호환 규칙 점검(옵셔널·기본값·무 unique)
-- [ ] T0.9 앱 셸: iPhone `TabView`, iPad/Mac `NavigationSplitView`, 빈 화면들
-- [ ] T0.10 컴포넌트 갤러리 프리뷰(3폼팩터 × 라이트/다크)
-- [ ] Q0 빌드 3플랫폼 통과, 테스트 통과
+- [x] T0.1 프로젝트·타깃 `Nestory` 로 개명(템플릿 `MyApp`/`ContentView` 제거), 멀티플랫폼 단일 타깃(iOS·iPadOS·macOS, visionOS 목적지는 이미 포함), 번들 ID `com.kimminung.nestory`, 표시 이름 Nestory
+- [x] T0.2 로컬 Swift 패키지 `Packages/NestoryKit`(제품 NestoryKit·NestoryData), `Packages/NestoryUI` 생성, 앱에 연결
+- [~] T0.3 Swift 6 언어 모드·`.gitignore` 완료. 린트/포맷 규칙, LFS는 보류(LFS는 D7 에셋 반입 시점에 설정)
+- [x] T0.4 String Catalog 초기화(앱·NestoryUI, 소스 언어 ko, 개발 지역 ko), `KoreanFormat`(₩·한국어 날짜) + 테스트
+- [x] T0.5 `NestoryUI` 디자인 토큰: 색(라이트/다크/밤 `NestoryColor` ShapeStyle), 둥근 타이포, 간격, 모서리, 그림자, 카테고리 색·아이콘
+- [x] T0.6 컴포넌트 1차: `NestoryCard`, `QuickLogButton`, `NestoryChip`, `EmptyState`, `DisclaimerBanner`, 주 버튼 스타일(모션 감소 대응)
+- [x] T0.7 토큰 대비 테스트(WCAG AA 자동 검증, 15조합 × 라이트/다크/밤) — 결과로 `peachDeep`·`cocoaSoft`·`warning`·`danger` 값을 어둡게 조정(PRD_Design §3.1 반영)
+- [x] T0.8 SwiftData 스키마 v1(17개 모델) + CloudKit 호환 규칙 자동 점검 테스트(기본값/옵셔널·inverse·unique 없음), 연쇄 삭제 테스트
+- [x] T0.9 앱 셸: compact=`TabView`, regular=`NavigationSplitView`(iPad·Mac·visionOS), 구역별 자리 표시 화면, 저장소 실패 안내 화면
+- [~] T0.10 컴포넌트 갤러리(더보기 > 디자인 갤러리, DEBUG 전용) + 프리뷰 4종(라이트/다크/밤/AX3). macOS 라이트·다크 렌더 확인. 🔒 iPhone·iPad 실제 화면 확인은 시뮬레이터 사용 협의 후(M1 이후)
+- [x] Q0 macOS·iOS Simulator·visionOS Simulator 빌드 통과(generic 목적지), 패키지 테스트 11개 통과(NestoryKit 8 + NestoryUI 3)
 
 ## M1 · 도메인 엔진 (`NestoryKit`) — UI 없이 `swift test`
 - [ ] T1.1 `PregnancyCalculator`: LMP/초음파/IVF → 예정일, 주+일수, D-day
@@ -168,4 +169,5 @@ gantt
 ## 진행 로그
 | 날짜 | 내용 |
 |---|---|
+| 2026-10-20 | M0 완료. 구조: 앱 타깃 + `Packages/NestoryKit`(NestoryKit 순수 도메인 / NestoryData SwiftData 스키마) + `Packages/NestoryUI`. 설계 변경: `LeavePlan`은 가족 단위(두 보호자 기간을 함께 담음, `LeavePeriod.guardian` 으로 구분). 시뮬레이터는 쓰지 않음(빌드는 generic 목적지, 테스트는 `swift test`, 프리뷰는 macOS). |
 | 2026-10-20 | 문서 5종 초안 작성. 정책 수치는 웹 검증 못함 → P1.1 로 구현 전 검증 필수. Blender 연결 생략(Claude Desktop 위임). 코드는 미착수. |

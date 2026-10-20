@@ -170,8 +170,8 @@ Xcode가 제공하는 최신 OS(27) 기준으로 시작한다. 하위 지원 폭
 | 타깃 | 종류 | 플랫폼 |
 |---|---|---|
 | `Nestory` | 앱 | iOS · iPadOS · macOS (visionOS 는 2단계에서 `destination` 추가) |
-| `NestoryKit` | 로컬 Swift 패키지 | 전 플랫폼 |
-| `NestoryUI` | 로컬 Swift 패키지 (디자인 시스템: 색·타이포·컴포넌트·스티커) | 전 플랫폼 |
+| `NestoryKit` (패키지 제품 2개) | 로컬 Swift 패키지 `Packages/NestoryKit`: `NestoryKit`(순수 도메인) · `NestoryData`(SwiftData 스키마) | 전 플랫폼 |
+| `NestoryUI` | 로컬 Swift 패키지 `Packages/NestoryUI` (디자인 시스템: 색·타이포·컴포넌트·스티커) | 전 플랫폼 |
 | `NestoryWidgets` | Widget Extension | iOS · iPadOS · macOS |
 | `NestoryShare` | Share Extension (공고 링크 수집) | iOS · iPadOS · macOS |
 | `NestoryTests` / `NestoryKitTests` | Swift Testing | — |
@@ -212,7 +212,7 @@ CloudKit 호환을 위해 모든 속성은 기본값 또는 옵셔널, 관계는
 | `GrowthRecord` | date, heightCm?, weightKg?, headCm? |
 | `Vaccination` | vaccineCode, doseNo, dueDate, doneDate?, place? |
 | `Employment` | type(정규직/계약직/…), hireDate, monthlyOrdinaryWage, insured, companySize? |
-| `LeavePlan` | name, scenarioIndex, createdAt |
+| `LeavePlan` | name, scenarioIndex, createdAt — **가족 단위**(두 보호자의 기간을 함께 담는다) |
 | `LeavePeriod` | kind(enum), guardianRef, start, end, partTimeHoursPerWeek? |
 | `SideJob` | title, company?, sourceURL?, pay, payUnit, hoursPerWeek?, remote, status, memo |
 | `WorkShift` | date, hours, earned |

@@ -23,10 +23,12 @@ iPhone · iPad · Mac, 그리고 Apple Vision Pro
 3. [다이어그램](#-다이어그램)
 4. [이럴 때 쓰세요 (활용 아이디어)](#-이럴-때-쓰세요-활용-아이디어)
 5. [플랫폼과 로드맵](#-플랫폼과-로드맵)
-6. [개인정보 원칙](#-개인정보-원칙)
-7. [문서](#-문서)
-8. [유의 사항](#-유의-사항)
-9. [English](#english)
+6. [진행 현황](#-진행-현황)
+7. [개발 시작하기](#-개발-시작하기)
+8. [개인정보 원칙](#-개인정보-원칙)
+9. [문서](#-문서)
+10. [유의 사항](#-유의-사항)
+11. [English](#english)
 
 ---
 
@@ -133,18 +135,21 @@ erDiagram
     SIDEJOB ||--o{ WORKSHIFT : logs
 ```
 
-### 5) 플랫폼 로드맵
+### 5) 마일스톤 로드맵
 ```mermaid
 flowchart LR
-    M0[M0 기반·디자인 시스템] --> M1[M1 도메인 엔진]
-    M1 --> M2[M2 임신·출산]
+    M0[M0 기반·디자인 시스템]:::done --> M1[M1 도메인 엔진]:::done
+    M1 --> M2[M2 임신·출산]:::next
     M2 --> M3[M3 육아 기록]
     M3 --> M4[M4 일정·위젯]
     M4 --> M5[M5 휴가·휴직]
     M5 --> M6[M6 휴직 중 알바]
     M6 --> M7[M7 공유·마감]
     M7 --> M8[M8 visionOS 확장]
+    classDef done fill:#A8E0CF,stroke:#5A4340,color:#5A4340
+    classDef next fill:#FFE08A,stroke:#5A4340,color:#5A4340
 ```
+> 초록 = 완료, 노랑 = 다음 작업
 
 ## 💡 이럴 때 쓰세요 (활용 아이디어)
 
@@ -168,6 +173,49 @@ flowchart LR
 
 아이콘·마스코트·스티커는 Blender 로 제작하며 플랫폼별 아이콘(iOS 라이트/다크/틴티드, macOS, visionOS 3레이어)을 포함합니다.
 
+## 🚧 진행 현황
+
+| 단계 | 상태 | 내용 |
+|---|---|---|
+| M0 기반·디자인 시스템 | ✅ 완료 | Swift 6 프로젝트, 디자인 토큰(라이트/다크/밤)·컴포넌트, SwiftData 스키마 17개 모델, 앱 셸(탭 ↔ 사이드바) |
+| M1 도메인 엔진 | ✅ 완료 | 임신 주수·예정일, 일정 생성, 예방접종, 성장 백분위, 휴직 검증, 소득 시뮬레이터, 휴직 중 알바 경고, 알림 계획 (테스트 95개, 커버리지 97%) |
+| M2 임신·출산 준비 | 🔜 다음 | 온보딩, 임신 홈, 주차 타임라인, 검진·체크리스트·바우처 |
+| M3~M8 | ⏳ 예정 | 육아 기록 → 일정·위젯 → 휴가·휴직 → 휴직 중 알바 → 가족 공유 → visionOS |
+
+자세한 태스크는 [Docs/TASKS.md](Docs/TASKS.md) 에 있습니다.
+
+**알려진 한계 (솔직하게)**
+- 제도·접종·검진 수치는 모두 **초안(`unverified`)** 입니다. 공식 출처 검증 전에는 앱에서 확정 값처럼 보이지 않도록 "참고용" 표시를 합니다.
+- 성장도표(LMS) 데이터는 아직 없습니다. 공식 표를 가져오기 전까지 백분위는 계산되지 않습니다.
+- 마스코트·아이콘·스티커는 Blender 작업 대기 중이라 임시 SF Symbol 을 씁니다.
+- iPhone·iPad 실제 화면은 아직 시뮬레이터로 확인하지 않았습니다(macOS 프리뷰와 3플랫폼 빌드로 검증).
+
+## 🛠 개발 시작하기
+
+**요구 사항**: Xcode (iOS·macOS·visionOS 27 SDK), Apple 개발 팀 서명
+
+```
+Nestory.xcodeproj          앱 프로젝트 (타깃 Nestory: iPhone·iPad·Mac, visionOS 목적지 포함)
+Nestory/                   앱 소스 (앱 셸, 화면)
+Packages/NestoryKit/       순수 도메인(NestoryKit) + SwiftData 스키마(NestoryData)
+  └ Sources/NestoryKit/Resources/rules/   제도·일정 규칙 JSON (출처·기준일·검증 상태 포함)
+Packages/NestoryUI/        디자인 시스템(색·타이포·컴포넌트·갤러리)
+Docs/                      PRD·태스크·에셋 의뢰서
+```
+
+```bash
+# 도메인·디자인 시스템 테스트 (시뮬레이터 불필요)
+cd Packages/NestoryKit && swift test
+cd Packages/NestoryUI  && swift test
+
+# 앱 빌드 (기기 없이 플랫폼별 확인)
+xcodebuild -project Nestory.xcodeproj -scheme Nestory -destination 'platform=macOS' build
+xcodebuild -project Nestory.xcodeproj -scheme Nestory -destination 'generic/platform=iOS Simulator' build
+xcodebuild -project Nestory.xcodeproj -scheme Nestory -destination 'generic/platform=visionOS Simulator' build
+```
+
+설계 원칙: 제도 숫자는 코드에 두지 않고 `rules/*.json` 에만 둡니다. 엔진은 UI·저장소와 분리된 순수 함수라 `swift test` 만으로 검증됩니다.
+
 ## 🔐 개인정보 원칙
 - 아기 건강·성장, 부모 고용·소득은 민감 정보로 다룹니다.
 - 자체 서버·광고·분석 SDK 없음. 데이터는 기기 + 개인 iCloud.
@@ -187,7 +235,7 @@ flowchart LR
 - 앱의 제도·금액 계산은 **참고용**입니다. 법령·지침은 바뀔 수 있으며, 화면마다 기준일과 출처를 함께 표시합니다. 확정 안내는 고용24, 고용센터(1350), 사업장 인사팀, 노무사에게 확인하세요.
 - 의료적 판단을 대신하지 않습니다. 응급 상황에서는 119 또는 병원에 연락하세요.
 - 휴직 중 취업 관련 기능은 수급 가능 여부를 **판정하지 않고** 확인 항목만 안내합니다.
-- 현재 문서에 적힌 제도 수치는 구현 전 공식 출처로 검증해야 하는 초안입니다.
+- 현재 규칙 데이터의 제도 수치는 공식 출처로 검증해야 하는 초안입니다(`Resources/rules/*.json` 의 `status` 참고).
 
 ---
 
@@ -238,6 +286,13 @@ Phase 1: iPhone, iPad, macOS (single SwiftUI codebase). Phase 2: visionOS (windo
 
 ## Privacy
 Health and employment/income data are treated as sensitive. No custom servers or third-party SDKs. AI features run on-device only and never give medical advice.
+
+## Progress
+M0 (foundation, design system, SwiftData schema, app shell) and M1 (domain engine: pregnancy, schedules, vaccines, growth percentiles, leave validation, income simulation, side-work advisories, notification planning; 95 tests, ~97% line coverage) are done. M2 (prenatal onboarding/home/timeline/checklists) is next.
+Known limits: all legal/benefit numbers are unverified drafts (flagged `unverified` in the rule JSON), growth-chart LMS data is not imported yet, and mascot/icon assets are pending.
+
+## Getting started
+Requires Xcode with the 27 SDKs. Run `swift test` in `Packages/NestoryKit` and `Packages/NestoryUI` (no simulator needed); build the app with `xcodebuild -project Nestory.xcodeproj -scheme Nestory -destination 'platform=macOS' build` (or `generic/platform=iOS Simulator` / `visionOS Simulator`). Numbers live only in `Packages/NestoryKit/Sources/NestoryKit/Resources/rules/*.json`.
 
 ## Docs
 [Tech PRD](Docs/PRD_Tech.md) · [Design PRD](Docs/PRD_Design.md) · [Tasks](Docs/TASKS.md) · [Blender asset brief](Docs/BLENDER_ASSET_BRIEF.md)

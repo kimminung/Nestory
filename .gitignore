@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/*/.build/
+
+# Blender
+*.blend1
+*.blend2
+
+# Secrets
+*.p12
+*.mobileprovision
+.env

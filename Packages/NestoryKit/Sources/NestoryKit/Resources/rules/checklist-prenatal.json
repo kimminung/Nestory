@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "id": "checklist-prenatal",
+    "schemaVersion": 1,
+    "status": "unverified",
+    "effectiveFrom": null,
+    "verifiedAt": null,
+    "sourceName": "일반적인 준비물 목록",
+    "sourceURL": "",
+    "note": "공식 기준이 아니라 일반적인 목록이에요. 상황에 맞게 추가·삭제하세요."
+  },
+  "groups": [
+    {
+      "id": "babyItems",
+      "title": "출산 준비물",
+      "category": "preparation",
+      "dueWeek": 30,
+      "items": [
+        {
+          "id": "checklist.babyItems.1",
+          "title": "신생아 기저귀"
+        },
+        {
+          "id": "checklist.babyItems.2",
+          "title": "물티슈"
+        },
+        {
+          "id": "checklist.babyItems.3",
+          "title": "배냇저고리·속싸개"
+        },
+        {
+          "id": "checklist.babyItems.4",
+          "title": "손싸개·발싸개"
+        },
+        {
+          "id": "checklist.babyItems.5",
+          "title": "젖병·젖꼭지"
+        },
+        {
+          "id": "checklist.babyItems.6",
+          "title": "분유·수유쿠션"
+        },
+        {
+          "id": "checklist.babyItems.7",
+          "title": "유축기(필요 시)"
+        },
+        {
+          "id": "checklist.babyItems.8",
+          "title": "아기 욕조·세면용품"
+        },
+        {
+          "id": "checklist.babyItems.9",
+          "title": "체온계"
+        },
+        {
+          "id": "checklist.babyItems.10",
+          "title": "카시트"
+        },
+        {
+          "id": "checklist.babyItems.11",
+          "title": "아기 침대·이불"
+        }
+      ]
+    },
+    {
+      "id": "nursery",
+      "title": "아기방 준비",
+      "category": "preparation",
+      "dueWeek": 32,
+      "items": [
+        {
+          "id": "checklist.nursery.1",
+          "title": "아기 침대 놓을 자리 정하기"
+        },
+        {
+          "id": "checklist.nursery.2",
+          "title": "실내 온·습도계"
+        },
+        {
+          "id": "checklist.nursery.3",
+          "title": "가습기·공기청정기"
+        },
+        {
+          "id": "checklist.nursery.4",
+          "title": "수유등"
+        },
+        {
+          "id": "checklist.nursery.5",
+          "title": "아기 빨래 세탁·건조 준비"
+        }
+      ]
+    },
+    {
+      "id": "hospitalBag",
+      "title": "입원 가방",
+      "category": "preparation",
+      "dueWeek": 35,
+      "items": [
+        {
+          "id": "checklist.hospitalBag.1",
+          "title": "산모수첩·신분증"
+        },
+        {
+          "id": "checklist.hospitalBag.2",
+          "title": "건강보험증(모바일 포함)"
+        },
+        {
+          "id": "checklist.hospitalBag.3",
+          "title": "산모 속옷·수유 브라"
+        },
+        {
+          "id": "checklist.hospitalBag.4",
+          "title": "산모 패드"
+        },
+        {
+          "id": "checklist.hospitalBag.5",
+          "title": "수유 가운"
+        },
+        {
+          "id": "checklist.hospitalBag.6",
+          "title": "세면도구"
+        },
+        {
+          "id": "checklist.hospitalBag.7",
+          "title": "슬리퍼·양말"
+        },
+        {
+          "id": "checklist.hospitalBag.8",
+          "title": "퇴원할 때 입을 옷"
+        },
+        {
+          "id": "checklist.hospitalBag.9",
+          "title": "보조배터리·충전기"
+        },
+        {
+          "id": "checklist.hospitalBag.10",
+          "title": "아기 배냇저고리·속싸개"
+        },
+        {
+          "id": "checklist.hospitalBag.11",
+          "title": "카시트 설치 확인"
+        }
+      ]
+    },
+    {
+      "id": "admin",
+      "title": "출산 전 행정·연락처",
+      "category": "administration",
+      "dueWeek": 34,
+      "items": [
+        {
+          "id": "checklist.admin.1",
+          "title": "다닐 소아과 알아보기"
+        },
+        {
+          "id": "checklist.admin.2",
+          "title": "응급 연락처 정리(병원·119)"
+        },
+        {
+          "id": "checklist.admin.3",
+          "title": "출생신고 준비물 확인"
+        },
+        {
+          "id": "checklist.admin.4",
+          "title": "산후도우미·조리원 일정 확인"
+        },
+        {
+          "id": "checklist.admin.5",
+          "title": "가족 돌봄 분담 이야기하기"
+        }
+      ]
+    }
+  ]
+}

@@ -20,6 +20,8 @@ public struct ScheduleRule: Codable, Identifiable, Hashable, Sendable {
     public let start: RuleOffset
     public let end: RuleOffset
     public let recommended: RuleOffset?
+    /// 신청·안내 공식 사이트 (없으면 nil)
+    public let link: String?
 }
 
 public struct ScheduleRuleSet: Codable, Sendable {
@@ -58,6 +60,7 @@ public struct ScheduledItem: Identifiable, Hashable, Sendable {
     public let windowStart: Date
     public let windowEnd: Date
     public let recommended: Date
+    public let link: String?
     /// 출생일을 몰라 출산예정일로 추정한 일정인지
     public let isEstimated: Bool
 
@@ -108,6 +111,7 @@ public enum ScheduleGenerator {
                 windowStart: start,
                 windowEnd: end,
                 recommended: recommended,
+                link: rule.link,
                 isEstimated: estimated
             )
         }

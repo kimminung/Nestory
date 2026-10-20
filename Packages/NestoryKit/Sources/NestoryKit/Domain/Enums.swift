@@ -13,6 +13,8 @@ public enum ChildSex: String, Codable, CaseIterable, Sendable {
 /// 출산예정일을 계산한 기준
 public enum DueDateMethod: String, Codable, CaseIterable, Sendable {
     case lastMenstrualPeriod, ultrasound, ivfTransfer
+    /// 병원에서 들은 예정일을 그대로 입력
+    case direct
 }
 
 public enum CareLogType: String, Codable, CaseIterable, Sendable {

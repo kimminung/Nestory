@@ -49,3 +49,13 @@ public enum TaskCategory: String, Codable, CaseIterable, Sendable {
 public enum DocumentKind: String, Codable, CaseIterable, Sendable {
     case leaveApplication, certificate, medical, other
 }
+
+/// 기저귀 종류 (CareLog.detail 에 저장)
+public enum DiaperKind: String, Codable, CaseIterable, Sendable {
+    case wet, dirty, both
+}
+
+/// 모유 수유 방향 (CareLog.detail 에 저장)
+public enum BreastSide: String, Codable, CaseIterable, Sendable {
+    case left, right, both
+}

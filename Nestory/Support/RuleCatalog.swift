@@ -6,12 +6,18 @@ struct RuleCatalog: Sendable {
     let prenatal: ScheduleRuleSet
     let checklist: ChecklistTemplate
     let weekGuide: WeekGuideSet
+    let infantCheckups: ScheduleRuleSet
+    let vaccines: VaccineRuleSet
+    let growth: GrowthReference
 
     static func load() throws -> RuleCatalog {
         RuleCatalog(
             prenatal: try ScheduleRuleSet.bundledPrenatal(),
             checklist: try ChecklistTemplate.bundledPrenatal(),
-            weekGuide: try WeekGuideSet.bundled()
+            weekGuide: try WeekGuideSet.bundled(),
+            infantCheckups: try ScheduleRuleSet.bundledInfantCheckups(),
+            vaccines: try VaccineRuleSet.bundled(),
+            growth: try GrowthReference.bundled()
         )
     }
 }

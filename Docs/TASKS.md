@@ -81,19 +81,19 @@ gantt
 - [~] Q2 테스트 130개(NestoryKit 108·NestoryData 19·NestoryUI 3), 커버리지 NestoryKit 97.5%·NestoryData 78.4%, 3플랫폼 빌드 경고 0, macOS 프리뷰로 10개 화면 렌더 확인. 🔒 iPhone·iPad 실화면, VoiceOver·Dynamic Type 감사는 미실시(시뮬레이터 협의 후)
 
 ## M3 · 육아 기록 (P0)
-- [ ] T3.1 `CareLog` CRUD, 종류별 입력 시트
-- [ ] T3.2 빠른 기록 버튼 + 햅틱, 최근 값 기억(분유 ml 등)
-- [ ] T3.3 수유/수면 타이머, 백그라운드 복원, Live Activity
-- [ ] T3.4 일간 타임라인 + 주간 요약 차트 (Swift Charts)
-- [ ] T3.5 성장 기록 + 성장도표 백분위 곡선
-- [ ] T3.6 예방접종 화면(완료 체크·다음 일정 알림)
-- [ ] T3.7 영유아 건강검진 화면
-- [ ] T3.8 홈(육아 모드) + 밤 수유 모드
+- [x] T3.1 `CareLogService`(기록·타이머·삭제) + 종류별 입력 시트(분유·모유·수면·기저귀·체온·투약, 지금 시작/끝난 기록 입력). 기록 수정은 없고 삭제 후 재입력(길게 누름·우클릭)
+- [x] T3.2 빠른 기록 버튼 6종, 최근 분유량 기억(`QuickLogDefaults`), 햅틱
+- [~] T3.3 모유·수면 타이머(진행 중 기록은 저장돼 앱을 닫아도 복원, 홈 카드·밤 모드에서 종료). Live Activity·잠금화면 위젯은 위젯 확장 타깃이 필요해 M4 로 이동
+- [x] T3.4 일간 요약·타임라인(자정 넘는 수면 분할), 주간 차트 3종(수유 횟수·수면 시간·기저귀)
+- [x] T3.5 성장 기록 추가/삭제, 항목별 그래프, 성별 설정. 백분위·밴드 곡선 코드는 있으나 🔒 공식 LMS 데이터(P1.3) 전까지 "데이터 없음" 안내만 표시
+- [x] T3.6 예방접종: 상태별 그룹(지금/예정/완료), 접종일·병원 기록·취소, 지연 시 다음 차수 자동 조정, 앞으로의 접종 알림 예약
+- [x] T3.7 영유아 건강검진 8회(`PostnatalPlanSync` 로 출생일 기준 생성), 완료 체크
+- [x] T3.8 육아 홈(월령·백일/돌 D-day·진행 중 타이머·마지막 기록·빠른 기록·오늘 요약·다가오는 일정) + 밤 수유 모드(전체 화면, 화면 켜짐 유지) + "아이가 태어났어요" 전환(`BirthSheet`)
 - [ ] T3.9 (P1) 발달 이정표 + 사진, 앨범
 - [ ] T3.10 (P1) 이유식·알레르기 로그
 - [ ] T3.11 (P1) 자연어 입력(FoundationModels, 폴백 폼)
 - [ ] T3.12 App Intents: "분유 기록", "수면 시작/종료"
-- [ ] Q3 기록 10만 건 성능 측정, 수동 QA
+- [~] Q3 테스트 150개(NestoryKit 118·NestoryData 29·NestoryUI 3), 커버리지 NestoryKit 97.6%·NestoryData 82.5%, 3플랫폼 경고 0, macOS 프리뷰로 육아 화면 9개 확인. 🔒 10만 건 성능 측정, iPhone·iPad 실화면 미실시
 
 ## M4 · 일정·알림·위젯
 - [ ] T4.1 통합 타임라인(검진·접종·휴직·알바·사용자 일정)
@@ -171,6 +171,7 @@ gantt
 ## 진행 로그
 | 날짜 | 내용 |
 |---|---|
+| 2026-10-20 | M3 완료(P0). `NestoryKit/Care`(CareAnalyzer: 일간·주간 요약·마지막 기록·경과 표기), `NestoryData`(CareLogService·VaccinationService·PostnatalPlanSync·FamilySetup.recordBirth), 앱 `Care/`(홈·기록·성장·접종·검진·밤 모드·입력 시트). 스키마 1.1.0: `CareLog.detailRaw`(옵셔널) 추가 — 기저귀 종류·모유 방향. **버그**: `Text(timerInterval:)` 기본이 카운트다운이라 `distantFuture` 와 쓰면 경과 대신 거대한 남은 시간이 나옴 → `countsDown: false`(전 화면 수정). 접종 일정은 저장하지 않고 완료 기록만 저장(스케줄러가 매번 계산). 접종 배너 문구가 휴직용("고용센터·사업장")이어서 범용 문구로 수정. |
 | 2026-10-20 | M2 완료(P0+T2.7). 앱: `Onboarding/ Home/ Pregnancy/ Common/ More/ Support/` + 규칙 3개 추가(`pregnancy-weeks` `checklist-prenatal`, `prenatal.json` 링크). NestoryData: `PrenatalPlanSync`(규칙→SwiftData 멱등 동기화, 예정일 변경 시 미완료만 이동)·`FamilySetup`. **함정**: macOS 27 의 `List`(NSOutlineView)가 행 안에 `contentShape` 가 있는 버튼 2개(토글+상세)를 두면 `TableViewListCore_Mac2` 에서 크래시 → 검사·체크리스트는 `ScrollView`+카드로 구현(원인은 최소 예제로 좁혔으나 SDK 쪽 문제로 판단, 다른 List 화면은 정상). 스키마 변경(V2) 항목(산모 기록·연락처·정렬)은 보류. |
 | 2026-10-20 | M1 완료(엔진). 구조: `Core/ Pregnancy/ Rules/ Vaccine/ Growth/ Leave/ SideWork/ Notifications/` + `Resources/rules/*.json`. 규칙 값은 전부 초안(unverified), 성장도표 LMS 는 데이터 없음(missing) — 웹 검증은 하지 않았음. 앱 UI 연결은 M2 부터. |
 | 2026-10-20 | M0 완료. 구조: 앱 타깃 + `Packages/NestoryKit`(NestoryKit 순수 도메인 / NestoryData SwiftData 스키마) + `Packages/NestoryUI`. 설계 변경: `LeavePlan`은 가족 단위(두 보호자 기간을 함께 담음, `LeavePeriod.guardian` 으로 구분). 시뮬레이터는 쓰지 않음(빌드는 generic 목적지, 테스트는 `swift test`, 프리뷰는 macOS). |

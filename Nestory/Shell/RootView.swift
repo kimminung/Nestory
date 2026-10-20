@@ -41,7 +41,7 @@ struct MainShellView: View {
             }
         }
         .tint(NestoryColor.peachDeep)
-        .task(id: children.first?.pregnancy?.dueDate) { syncPlan() }
+        .task(id: planSignature) { syncPlan() }
         .task(id: notificationSignature) {
             await NotificationService.reschedule(events: notificationEvents)
         }
@@ -51,14 +51,28 @@ struct MainShellView: View {
 
     /// 앱을 열 때마다 규칙 변경(예정일·규칙 업데이트)을 일정에 반영한다. 멱등이라 여러 번 불러도 안전하다.
     private func syncPlan() {
-        guard let child = children.first, child.pregnancy != nil, let catalog else { return }
+        guard let child = children.first, let catalog else { return }
         do {
-            try PrenatalPlanSync.sync(
-                child: child, schedule: catalog.prenatal, checklist: catalog.checklist, context: modelContext
-            )
+            if child.birthDate != nil {
+                try PostnatalPlanSync.sync(
+                    child: child, prenatal: catalog.prenatal, infantCheckups: catalog.infantCheckups, context: modelContext
+                )
+            } else if child.pregnancy != nil {
+                try PrenatalPlanSync.sync(
+                    child: child, schedule: catalog.prenatal, checklist: catalog.checklist, context: modelContext
+                )
+            }
         } catch {
             Self.logger.error("일정 동기화 실패: \(error.localizedDescription)")
         }
+    }
+
+    /// 예정일·출생일이 바뀌면 일정을 다시 맞추기 위한 지문
+    private var planSignature: String {
+        let child = children.first
+        let due = child?.pregnancy?.dueDate ?? child?.dueDate
+        let birth = child?.birthDate
+        return "\(due?.timeIntervalSince1970 ?? 0)|\(birth?.timeIntervalSince1970 ?? 0)"
     }
 
     private var notificationEvents: [PlannableEvent] {
@@ -68,7 +82,18 @@ struct MainShellView: View {
         let fromCheckups = openCheckups.compactMap { checkup -> PlannableEvent? in
             checkup.scheduledDate.map { PlannableEvent(id: "checkup-\(checkup.id)", title: checkup.title, date: $0) }
         }
-        return fromTasks + fromCheckups
+        return fromTasks + fromCheckups + vaccineEvents
+    }
+
+    /// 아직 안 맞은 접종 중 앞으로 예정인 것
+    private var vaccineEvents: [PlannableEvent] {
+        guard let child = children.first, let birth = child.birthDate, let catalog else { return [] }
+        let now = Date()
+        return VaccineScheduler.schedule(
+            birth: birth, rules: catalog.vaccines, records: VaccinationService.records(for: child), now: now
+        )
+        .filter { $0.status != .done && $0.scheduledDate >= Calendar.korea.startOfDay(for: now) }
+        .map { PlannableEvent(id: "vaccine-\($0.id)", title: "\($0.name) \($0.doseNo)차 접종", date: $0.scheduledDate) }
     }
 
     /// 일정이 바뀔 때만 알림을 다시 예약하기 위한 지문

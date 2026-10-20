@@ -60,7 +60,7 @@ struct ContractionTimerView: View {
                 Text(startedAt == nil ? "진통 시작" : "진통 끝")
                     .font(.nestory(.title2, weight: .bold))
                 if let startedAt {
-                    Text(timerInterval: startedAt...Date.distantFuture, showsHours: false)
+                    Text(timerInterval: startedAt...Date.distantFuture, pauseTime: nil, countsDown: false, showsHours: false)
                         .font(.nestory(.title3))
                         .monospacedDigit()
                 }

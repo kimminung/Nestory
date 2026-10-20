@@ -18,20 +18,20 @@ struct SectionView: View {
     }
 }
 
-/// 홈: 임신 중이면 임신 홈, 태어났다면(M3 전까지) 안내
+/// 홈: 임신 중이면 임신 홈, 태어났다면 육아 홈
 struct HomeView: View {
     var body: some View {
         WithActiveChild { child in
             if child.birthDate == nil {
                 PregnancyHomeView(child: child)
             } else {
-                SectionPlaceholderView(section: .home)
+                CareHomeView(child: child)
             }
         }
     }
 }
 
-/// 기록: 임신 중에는 태동·진통, 육아 기록은 M3
+/// 기록: 임신 중에는 태동·진통, 태어난 뒤에는 육아 기록
 struct RecordsHomeView: View {
     var body: some View {
         WithActiveChild { child in
@@ -53,13 +53,13 @@ struct RecordsHomeView: View {
                 .background(NestoryColor.cream)
                 .navigationTitle("기록")
             } else {
-                SectionPlaceholderView(section: .records)
+                CareRecordsView(child: child)
             }
         }
     }
 }
 
-/// 일정: 임신 중에는 타임라인·검사·체크리스트, 통합 캘린더는 M4
+/// 일정: 임신 중에는 타임라인·검사·체크리스트, 태어난 뒤에는 접종·영유아 검진 (통합 캘린더는 M4)
 struct ScheduleHomeView: View {
     var body: some View {
         WithActiveChild { child in
@@ -85,7 +85,26 @@ struct ScheduleHomeView: View {
                 .background(NestoryColor.cream)
                 .navigationTitle("일정")
             } else {
-                SectionPlaceholderView(section: .schedule)
+                List {
+                    NavigationLink {
+                        VaccinesView(child: child)
+                    } label: {
+                        RowLabel(title: "예방접종", subtitle: "맞을 시기와 접종 기록", systemImage: "syringe.fill", tint: .rose)
+                    }
+                    NavigationLink {
+                        InfantCheckupsView(child: child)
+                    } label: {
+                        RowLabel(title: "영유아 건강검진", subtitle: "8회 검진 시기", systemImage: "heart.text.square.fill", tint: .mint)
+                    }
+                    NavigationLink {
+                        GrowthView(child: child)
+                    } label: {
+                        RowLabel(title: "성장 기록", subtitle: "키·몸무게·머리둘레", systemImage: "chart.line.uptrend.xyaxis", tint: .butter)
+                    }
+                }
+                .scrollContentBackground(.hidden)
+                .background(NestoryColor.cream)
+                .navigationTitle("일정")
             }
         }
     }

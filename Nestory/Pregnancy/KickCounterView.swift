@@ -64,7 +64,7 @@ struct KickCounterView: View {
                 HStack {
                     Text("경과 시간").font(.nestory(.subheadline, weight: .semibold))
                     Spacer()
-                    Text(timerInterval: session.start...Date.distantFuture, showsHours: true)
+                    Text(timerInterval: session.start...Date.distantFuture, pauseTime: nil, countsDown: false, showsHours: true)
                         .font(.nestory(.title3, weight: .bold))
                         .monospacedDigit()
                 }

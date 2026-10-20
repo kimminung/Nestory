@@ -15,7 +15,7 @@ iPhone · iPad · Mac, 그리고 Apple Vision Pro
 
 <sub>🎬 나레이션과 음악이 들어간 전체 영상은 아래 <a href="#-소개-영상"><b>소개 영상</b></a>에서 볼 수 있어요</sub>
 
-> 상태: **M2 완료**(임신·출산 준비 화면: 온보딩·임신 홈·타임라인·검진·체크리스트·지원금·태동·진통, 테스트 130개) · 2026-10-20
+> 상태: **M3 완료**(육아 기록: 수유·수면·기저귀 기록, 타이머, 차트, 성장, 예방접종, 영유아 검진, 밤 수유 모드, 테스트 150개) · 2026-10-20
 
 </div>
 
@@ -161,8 +161,8 @@ erDiagram
 flowchart LR
     M0[M0 기반·디자인 시스템]:::done --> M1[M1 도메인 엔진]:::done
     M1 --> M2[M2 임신·출산]:::done
-    M2 --> M3[M3 육아 기록]:::next
-    M3 --> M4[M4 일정·위젯]
+    M2 --> M3[M3 육아 기록]:::done
+    M3 --> M4[M4 일정·위젯]:::next
     M4 --> M5[M5 휴가·휴직]
     M5 --> M6[M6 휴직 중 알바]
     M6 --> M7[M7 공유·마감]
@@ -201,14 +201,15 @@ flowchart LR
 | M0 기반·디자인 시스템 | ✅ 완료 | Swift 6 프로젝트, 디자인 토큰(라이트/다크/밤)·컴포넌트, SwiftData 스키마 17개 모델, 앱 셸(탭 ↔ 사이드바) |
 | M1 도메인 엔진 | ✅ 완료 | 임신 주수·예정일, 일정 생성, 예방접종, 성장 백분위, 휴직 검증, 소득 시뮬레이터, 휴직 중 알바 경고, 알림 계획 (테스트 95개, 커버리지 97%) |
 | M2 임신·출산 준비 | ✅ 완료 | 온보딩(예정일 4가지 입력), 임신 홈, 주차 타임라인, 산전 검사, 체크리스트 32항목, 제도·지원금 카드, 태동 카운터, 진통 타이머, 일정 알림 (테스트 130개) |
-| M3 육아 기록 | 🔜 다음 | 수유·수면·기저귀 빠른 기록, 타이머, 차트, 성장 곡선, 예방접종 |
-| M4~M8 | ⏳ 예정 | 일정·위젯 → 휴가·휴직 → 휴직 중 알바 → 가족 공유 → visionOS |
+| M3 육아 기록 | ✅ 완료 | 분유·모유·수면·기저귀·체온·투약 기록, 수유·수면 타이머, 일간 요약·주간 차트, 성장 기록, 예방접종 일정·기록, 영유아 검진 8회, 육아 홈, 밤 수유 모드, "아이가 태어났어요" 전환 (테스트 150개) |
+| M4 일정·위젯 | 🔜 다음 | 통합 타임라인, 위젯, Live Activity, Mac 메뉴바 빠른 기록 |
+| M5~M8 | ⏳ 예정 | 휴가·휴직 → 휴직 중 알바 → 가족 공유 → visionOS |
 
 자세한 태스크는 [Docs/TASKS.md](Docs/TASKS.md) 에 있습니다.
 
 **알려진 한계 (솔직하게)**
 - 제도·접종·검진 수치는 모두 **초안(`unverified`)** 입니다. 공식 출처 검증 전에는 앱에서 확정 값처럼 보이지 않도록 "참고용" 표시를 합니다.
-- 성장도표(LMS) 데이터는 아직 없습니다. 공식 표를 가져오기 전까지 백분위는 계산되지 않습니다.
+- 성장도표(LMS) 데이터는 아직 없습니다. 공식 표를 가져오기 전까지 백분위는 계산되지 않고, 성장 기록은 그래프로만 보여 줍니다.
 - 마스코트·아이콘·스티커(주차별 과일 포함)는 Blender 작업 대기 중이라 임시 SF Symbol 을 씁니다.
 - 산모 기록(체중·혈압)·병원 연락처·체크리스트 순서 정렬은 스키마 V2 가 필요해 보류했습니다.
 - 알림은 로컬 알림으로 예약하지만 실기기 검증 전입니다.
@@ -275,7 +276,7 @@ xcodebuild -project Nestory.xcodeproj -scheme Nestory -destination 'generic/plat
 Prenatal prep · baby care logs · family schedule · leave & parental-leave planning · side-work tracking during leave.
 Built with SwiftUI for iPhone, iPad and Mac first, then extended to Apple Vision Pro. Korean-market first.
 
-> Status: **M2 done** (prenatal screens: onboarding, pregnancy home, timeline, checkups, checklists, benefits, kick counter, contraction timer; 130 tests) · 2026-10-20
+> Status: **M3 done** (baby care: feeding/sleep/diaper logs, timers, charts, growth, vaccines, well-baby checkups, night-feeding mode; 150 tests) · 2026-10-20
 
 🎬 **Intro video & GIF** — at the top of this README (1:39 concept video with Korean narration and original music; the screens are design mockups at the M1 stage).
 

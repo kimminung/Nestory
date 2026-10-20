@@ -91,6 +91,17 @@ public enum FamilySetup {
         try context.save()
     }
 
+    /// "아이가 태어났어요": 출생일을 기록한다. 이후 `PostnatalPlanSync` 로 출생 후 일정을 만든다.
+    public static func recordBirth(
+        on date: Date,
+        for child: Child,
+        context: ModelContext,
+        calendar: Calendar = .korea
+    ) throws {
+        child.birthDate = calendar.startOfDay(for: date)
+        try context.save()
+    }
+
     private static func applyDueDate(
         _ input: DueDateInput,
         to child: Child,

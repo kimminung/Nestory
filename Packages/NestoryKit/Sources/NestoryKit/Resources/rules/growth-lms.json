@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "id": "growth-lms",
+    "schemaVersion": 1,
+    "status": "missing",
+    "effectiveFrom": null,
+    "verifiedAt": null,
+    "sourceName": "질병관리청·대한소아과학회 2017 소아청소년 성장도표",
+    "sourceURL": "https://knhanes.kdca.go.kr",
+    "note": "LMS 표를 가져오지 못했어요. 공식 표(체중·키·머리둘레, 성별, 월령)를 내려받아 tables 에 채우세요. 값을 추정해서 넣지 마세요."
+  },
+  "tables": []
+}

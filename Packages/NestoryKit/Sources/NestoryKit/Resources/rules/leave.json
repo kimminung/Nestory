@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "id": "leave",
+    "schemaVersion": 1,
+    "status": "unverified",
+    "effectiveFrom": null,
+    "verifiedAt": null,
+    "sourceName": "고용노동부·고용24",
+    "sourceURL": "https://www.work24.go.kr",
+    "note": "휴가·휴직 제도와 급여 금액은 작성자 지식 기반 초안이며 공식 출처로 검증되지 않았어요. 검증 후 status=verified, verifiedAt 기입. 6+6 월별 상한과 근로시간 단축 급여는 특히 확인이 필요해요. 모든 금액은 원 단위."
+  },
+  "maternity": {
+    "totalDaysSingle": 90,
+    "minPostBirthDaysSingle": 45,
+    "totalDaysMultiple": 120,
+    "minPostBirthDaysMultiple": 60,
+    "paidRate": 1.0,
+    "monthlyCap": null
+  },
+  "paternity": {
+    "days": 20,
+    "withinDaysOfBirth": 120,
+    "maxSplits": 3,
+    "paidRate": 1.0
+  },
+  "parental": {
+    "maxMonthsPerParent": 12,
+    "childMaxAgeYears": 8,
+    "applyDaysBefore": 30,
+    "benefit": {
+      "rate": 0.8,
+      "monthlyCap": 1500000,
+      "monthlyFloor": 700000
+    },
+    "sixPlusSix": {
+      "childMaxAgeMonths": 18,
+      "months": 6,
+      "rate": 1.0,
+      "monthlyCapByMonth": [
+        2500000,
+        2500000,
+        3000000,
+        3500000,
+        4000000,
+        4500000
+      ]
+    }
+  },
+  "reducedHours": {
+    "fullTimeWeeklyHours": 40,
+    "minWeeklyHours": 15,
+    "maxWeeklyHours": 35,
+    "maxMonths": 36,
+    "supportRate": 0.8,
+    "supportMonthlyCap": 1500000,
+    "applyDaysBefore": 30
+  }
+}
